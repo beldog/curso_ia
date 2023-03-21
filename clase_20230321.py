@@ -71,8 +71,8 @@
 #
 # Ex 2: Recorre dos lista con un "for" y muestra diferentes combinaciones
 #
-print("\nMostramos todas las combinaciones existentes de dos listas: ")
-
+print("\nEx 2: Mostramos todas las combinaciones existentes de dos listas")
+print("----------------------------------------------------------------")
 l1 = "rojo,amarillo,azul,negro,blanco".rsplit(",")
 l2 = "casa,puente,armario".rsplit(",")
 
@@ -93,3 +93,60 @@ for x in l1:
                                             # referencia en https://docs.python.org/3.11/library/functions.html#print
         i += 1
 
+
+#
+# Ex 3 (Bonus track): Crea dos dados, informando de las caras por teclado, tira los dados y suma los resultados
+#
+import random as rd
+
+print("\nEx 3 (Bonus track): Tiramos dos dados y sumamos su resultado")
+print("----------------------------------------------")
+
+# Almacenamos los dados en una lista y para cada elemento de la lista
+# guardamos sus propiedades: caras y tirada.
+# [
+#   {"nombre": "SSS", "caras": x, "tirada": y},
+#   {"nombre": "SSS", "caras": x, "tirada": y},
+#   ...
+#   {"nombre": "SSS", "caras": x, "tirada": y}
+# ]
+
+dados = []
+
+total = int(input("¿Cuántos dados quieres?: "))
+
+i = 1
+while i <= total:
+    print("\nIntroduce los datos para el dado ", i, ":", sep="")
+
+    caras = 0
+    repetir = True
+    while repetir:
+        try:
+            caras = int(input("Caras del dado (mayor o igual a 4): "))
+
+            if caras <= 3:
+                raise Exception("Number too low")
+
+            nombre = "D-"+str(i)
+            tirada = rd.randrange(1, caras) # Tiramos el dado para que nos de un valor
+            dados.append({"nombre": nombre,
+                          "caras": caras,
+                          "tirada": tirada})
+
+            repetir = False # Terminamos el bucle para el dado actual
+        except:
+            print("\t!!! El valor tiene que ser un número entero y mayor de o igual a 4.")
+
+    i += 1
+
+print("\nLos dados son:", dados)
+
+suma = 0
+for d in dados:
+    t = d.get("tirada")
+
+    print("La tirada del dado", d.get("nombre"), "ha sido: ", t)
+    suma += t
+
+print("\nLa suma de las tiradas es: ", suma)
