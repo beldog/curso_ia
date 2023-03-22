@@ -68,30 +68,30 @@
 # else:
 #     print(var)
 
+# #
+# # Ex 2: Recorre dos lista con un "for" y muestra diferentes combinaciones
+# #
+# print("\nEx 2: Mostramos todas las combinaciones existentes de dos listas")
+# print("----------------------------------------------------------------")
+# l1 = "rojo,amarillo,azul,negro,blanco".rsplit(",")
+# l2 = "casa,puente,armario".rsplit(",")
 #
-# Ex 2: Recorre dos lista con un "for" y muestra diferentes combinaciones
+# len1 = len(l1)
+# len2 = len(l2)
 #
-print("\nEx 2: Mostramos todas las combinaciones existentes de dos listas")
-print("----------------------------------------------------------------")
-l1 = "rojo,amarillo,azul,negro,blanco".rsplit(",")
-l2 = "casa,puente,armario".rsplit(",")
-
-len1 = len(l1)
-len2 = len(l2)
-
-print("Lista 1: ", l1, len1, "elementos.")
-print("Lista 2: ", l2, len2, "elementos.")
-
-total = len1*len2
-print("\nHay", total, "combinaciones")
-
-i = 1
-for x in l1:
-    for y in l2:
-        print(i, ": ", x, "-", y, sep="")   # ajustamos el separador de variables (sep="")
-                                            # para que el texto se imprima bien en consola
-                                            # referencia en https://docs.python.org/3.11/library/functions.html#print
-        i += 1
+# print("Lista 1: ", l1, len1, "elementos.")
+# print("Lista 2: ", l2, len2, "elementos.")
+#
+# total = len1*len2
+# print("\nHay", total, "combinaciones")
+#
+# i = 1
+# for x in l1:
+#     for y in l2:
+#         print(i, ": ", x, "-", y, sep="")   # ajustamos el separador de variables (sep="")
+#                                             # para que el texto se imprima bien en consola
+#                                             # referencia en https://docs.python.org/3.11/library/functions.html#print
+#         i += 1
 
 
 #
@@ -129,7 +129,7 @@ while i <= total:
                 raise Exception("Number too low")
 
             nombre = "D-"+str(i)
-            tirada = rd.randrange(1, caras) # Tiramos el dado para que nos de un valor
+            tirada = rd.randrange(1, caras+1) # Tiramos el dado para que nos de un valor
             dados.append({"nombre": nombre,
                           "caras": caras,
                           "tirada": tirada})
