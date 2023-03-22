@@ -117,7 +117,7 @@ total = int(input("¿Cuántos dados quieres?: "))
 
 i = 1
 while i <= total:
-    print("\nIntroduce los datos para el dado ", i, ":", sep="")
+    print("\nIntroduce los datos para el Dado ", i, ":", sep="")
 
     caras = 0
     repetir = True
@@ -136,7 +136,7 @@ while i <= total:
 
             repetir = False # Terminamos el bucle para el dado actual
         except:
-            print("\t!!! El valor tiene que ser un número entero y mayor de o igual a 4.")
+            print("\t!!! El valor tiene que ser un número entero y mayor o igual a 4.")
 
     i += 1
 
