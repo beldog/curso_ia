@@ -121,6 +121,7 @@ MAX = 50
 temperatura = 0
 incremento = 10
 
+
 # Sube la temperatura t grados
 # Devuelve: el valor de la temperatura tras sumar t
 def subir(t = 1):
@@ -129,6 +130,7 @@ def subir(t = 1):
         raise Exception("Has llegado al límite")
 
     return r
+
 
 # Baja la temperatura t grados
 # Devuelve: la nueva temperatura tras restart t
@@ -141,46 +143,77 @@ def bajar(t = 1):
 
 
 # Muestra la barra de temperatura
-def mostrar_temperatura():
+def mostrar_temperatura(step=0):
+    # Variables a utilizar para colorear el incremento.
+    # Los códigos son ANSI.
+    # Ref: https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal
+    # Ref: https://es.wikipedia.org/wiki/Código_escape_ANSI
+    color_s = ""
+    color_e = ""
+
     print("[", sep="", end="")
 
     i = MIN
     while i <= MAX:
+        if step == 1:   # hemos subimos temperatura
+            if i > (temperatura-incremento) and i <= temperatura:
+                color_s = "\033[91m"    # blue color
+                color_e = "\033[0m"     # default color
+        elif step == -1:    # bajamos temperatura
+            if i <= (temperatura+incremento) and i > temperatura:
+                color_s = "\033[94m"    # red color
+                color_e = "\033[0m"     # default color
+
         if i == 0:
-            print("0", sep="", end="")
+            print(color_s, "0", color_e, sep="", end="")
         else:
             if i <= temperatura:
-                print("#", sep="", end="")
+                print(color_s, "#", color_e, sep="", end="")
             else:
-                print("-", sep="", end="")
+                print(color_s, "-", color_e, sep="", end="")
+
+        color_s = ""    # Reset colors
+        color_e = ""    # Reset colors
         i += 1
     else:
         print("] ", temperatura, " ªC", sep="")
 
 
 print("\nElige la opción:"
-      "\n\t(+) Subir 10ºC"
-      "\n\t(-) Bajar 10ºC"
-      "\n\tCualquier otra tecla para ver la Temperatura actual"
-      "\n\t(S) Salir")
+      "\n\t(+) Subir ", incremento, "ºC"
+      "\n\t(-) Bajar ", incremento, "ºC"
+      "\n\t(C) Cambiar el incremento"
+      "\n\t(S) Salir"
+      "\n\tCualquier otra tecla para ver la Temperatura actual",
+      sep="")
 
 estado = True
 while estado:
-    t = input(": ")
+    t = input("> ")
 
     if t == "+":
         try:
             temperatura = subir(incremento)
-            mostrar_temperatura()
+            mostrar_temperatura(1)
         except:
-            print("\t!!! No se puede subir más la temperatura")
+            print("\t!!! La temperatura está el máximo")
     elif t == "-":
         try:
             temperatura = bajar(incremento)
-            mostrar_temperatura()
+            mostrar_temperatura(-1)
         except:
-            print("\t!!! No se puede bajar más la temperatura")
-
+            print("\t!!! La temperatura está al mínimo")
+    elif t.lower() == "c":
+        finished = False
+        while not finished:
+            try:
+                i = int(input("Indica el nuevo incremento: "))
+                if i <= 0:
+                    raise Exception("Out of range")
+                incremento = i
+                finished = True
+            except:
+                print("\t!!! Introduce un número entero mayor de 0.")
     elif t.lower() == "s":
         estado = False
 
