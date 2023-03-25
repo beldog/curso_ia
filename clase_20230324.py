@@ -176,7 +176,7 @@ def mostrar_temperatura(step=0):
         color_e = ""    # Reset colors
         i += 1
     else:
-        print("] ", temperatura, " ªC", sep="")
+        print("] ", temperatura, " ºC", sep="")
 
 
 print("\nElige la opción:"
