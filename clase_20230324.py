@@ -122,8 +122,8 @@ temperatura = 0
 incremento = 5
 
 
-# Sube la temperatura t grados
-# Devuelve: el valor de la temperatura tras sumar t
+# Sube la temperatura inc grados
+# Devuelve: el valor de la temperatura tras sumar inc
 def subir(tem, inc=1):
     r = tem + inc
     if r > MAX:
@@ -132,8 +132,8 @@ def subir(tem, inc=1):
     return r
 
 
-# Baja la temperatura t grados
-# Devuelve: la nueva temperatura tras restart t
+# Baja la temperatura inc grados
+# Devuelve: la nueva temperatura tras restart inc
 def bajar(tem, inc=1):
     r = tem - inc
     if r < MIN:
