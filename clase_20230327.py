@@ -50,13 +50,14 @@ def mostrar_poblacion(pais="españa"):
     if not encontrado:
         print("Pais no encontrado.")
 
+
 def detalle_pais(pais):
-    mostrar_poblacion(pais)
+    if pais == "":
+        mostrar_poblacion()
+    else:
+        mostrar_poblacion(pais)
 
 
 print("Busca la población de un país")
-p = ""
-while p == "":
-    p = input("País: ")
-
+p = input("País: ")
 detalle_pais(p)
