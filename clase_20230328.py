@@ -40,7 +40,7 @@ curso = []
 def alta_alumno():
     dni = ""
     fecha = None
-    while dni == "" and fecha is None:
+    while dni == "" or fecha is None:
         try:
             dni = input("DNI: ")
 
