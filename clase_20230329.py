@@ -11,11 +11,12 @@ import datetime as dt
 
 class Alumno:
 
-    def __init__(self, dni, fecha):
+    def __init__(self, dni, fecha):     # Constructor de la clase; utilizada para inicilizar la instancia
         self.dni = dni
         self.fecha = fecha
 
-    def __str__(self):
+    def __str__(self):  # Método utilizado para representar la instáncia en formato string.
+                        # Utilizado para mostrar por: pantalla, impresora, fichero, etc
         return f"{self.dni} - {self.fecha.strftime('%d/%m/%Y')}"
 
 
