@@ -1,0 +1,25 @@
+body {
+    font-size: 2vw;
+}
+
+.bigger {
+    font-size: 5vw;
+}
+
+.blue {
+    color: blue;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+ol > li#li1{
+    animation: blinker 1s linear infinite;
+}
+
+li.highlighted{
+    background-color: deeppink;
+}
