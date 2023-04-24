@@ -2,6 +2,7 @@ function getDate(){
     let f = [];
     let now = new Date();
 
+    f.push(now);
     f.push(now.getDate() +"/"+ (now.getMonth()+1) +"/"+ now.getFullYear());
     f.push(now.getFullYear() +"-"+ (now.getMonth()+1) +"-"+ now.getDate());
 
@@ -14,14 +15,13 @@ window.onload = function(){
     let timeElement = document.createElement("time")
     let fecha = getDate();
 
-    timeElement.innerText = fecha[0];
-    timeElement.setAttribute("datetime", fecha[1]);
+    timeElement.innerText = fecha[1];
+    timeElement.setAttribute("datetime", fecha[2]);
     tagElement.appendChild(timeElement);
 
     // Mostramos el saludo en base a la hora
     let saludoElement = document.getElementById("saludo");
-    let f = new Date();
-
+    let f = fecha[0];
     if(f.getHours()>=6 && f.getHours()<13){
         saludoElement.innerText = "Buenos días";
     }
