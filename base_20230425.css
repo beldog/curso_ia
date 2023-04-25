@@ -1,0 +1,37 @@
+body {
+    font-size: 5rem;
+    width: 95%;
+    margin: auto;
+}
+
+ul {
+    margin: 2rem auto;
+}
+
+ul > li{
+    list-style: none;
+    box-sizing: content-box;
+    float: left;
+
+    width: 10rem;
+    height: 10rem;
+
+    border: solid #5B6DCD 10px;
+    margin: 1px;
+    padding: 5px;
+
+    text-align: center;
+    line-height: 10rem;
+    vertical-align: middle;
+}
+
+.winner {
+    background-color: gold;
+    animation: flash 1s linear alternate;
+}
+
+@keyframes flash {
+    50% {
+        opacity: 0;
+    }
+}
